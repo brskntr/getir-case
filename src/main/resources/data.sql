@@ -1,0 +1,5 @@
+INSERT INTO BOOK ( ID,AUTHOR,NAME,PRICE,STOCK_COUNT) VALUES (UUID(),'George Orwell','1984','12.00',100);
+INSERT INTO BOOK ( ID,AUTHOR,NAME,PRICE,STOCK_COUNT) VALUES (UUID(),'Dostoyevski','Yeraltından Notlar','11.00',25);
+
+INSERT INTO CUSTOMER ( ID,EMAIL,FULLNAME) VALUES (UUID(),'bariskantar@gmail.com','Baris Kantar');
+INSERT INTO CUSTOMER ( ID,EMAIL,FULLNAME) VALUES (UUID(),'baristest@gmail.com','Baris Test');
