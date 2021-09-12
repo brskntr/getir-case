@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "e643a161-2de5-4b95-8895-bb7d576b73b8",
+		"name": "GETIR CASE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Update Book Stock",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bookId\":\"a6e42047-eea7-4d7cs-afbb-3d1c0046a85a\",\n    \"stockCount\" : 70\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/book/update-stock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book",
+						"update-stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"author\":\"George Orwell\",\n    \"name\": \"Hayvan Çiftliği\",\n    \"price\":10.00,\n    \"stockCount\" : 100\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/book/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"bariskantar65@gmail.com\",\n    \"fullName\":\"Baris Kantar\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-Auth",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1Mzc0MzNkOC1kYjA2LTQwMmMtOWZmMS0xMDI0NzZmYTE1NTUiLCJleHAiOjE2MzE0OTAxOTEsImlhdCI6MTYzMTQ3MjE5MX0.OYpmGLKWHv03PTerd3jEG-o2P9nN4vo86_JPk_olt73PYcCtVkUeFfHs-oA0DQ1KmpZA-Bthx0PA0RHwosDyOw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bookId\":\"a048d49b-e7b1-4b91-b98a-ceedfc26cda4\",\n    \"count\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/order/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"order",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order List by Date Range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/order/get/date-range?startDate=2021-01-01T00:00:00.000Z&endDate=2021-10-01T00:00:00.000Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"order",
+						"get",
+						"date-range"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2021-01-01T00:00:00.000Z"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-10-01T00:00:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/order/get/003d12b5-487c-4eee-8ac8-90e42914136c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"order",
+						"get",
+						"003d12b5-487c-4eee-8ac8-90e42914136c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer Orders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkMDM4ZmI2Zi0xYzVjLTQ3OTQtYjhjNS1lYTdhZGVkZjY5ODgiLCJleHAiOjE2MzE0MTMxMTIsImlhdCI6MTYzMTM5NTExMn0.EE9MsHyTim4wLecdU1LXULGhJE_X9RINavYfJu1_2gwp4ZFfWEWmXb_s2v3NOKZXExeqso-o7dVuVDgUjTk10w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/customer/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
