@@ -1,6 +1,7 @@
 package com.example.demo.customer;
 
 import com.example.demo.order.OrderEntity;
+import com.example.demo.shared.model.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,13 +24,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity(name = "customer")
-public class CustomerEntity {
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id")
-    private String id;
+public class CustomerEntity extends BaseEntity implements Serializable {
 
     @Column(name = "email")
     private String email;

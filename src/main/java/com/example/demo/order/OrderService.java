@@ -8,9 +8,12 @@ import com.example.demo.exceptions.BadRequestException;
 import com.example.demo.exceptions.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
+import java.util.List;
 
 /**
  * @author bariskantar
@@ -33,6 +36,7 @@ public class OrderService {
 
     public OrderResource create(OrderDto orderDto){
         log.info("Order -> {}",orderDto);
+        
         if(orderDto.getCount()<=0){
             throw new BadRequestException("Item count must greater than 0");
         }
@@ -58,5 +62,10 @@ public class OrderService {
     public OrderResource get(String orderId) {
         OrderEntity orderEntity = orderRepository.findById(orderId).orElseThrow(() -> new NotFoundException("Order not found"));
         return modelMapper.map(orderEntity, OrderResource.class);
+    }
+
+    public List<OrderResource> listByDateRange(ZonedDateTime startDate, ZonedDateTime endDate) {
+        List<OrderEntity> orderEntityList = orderRepository.findByCreateDateBetween(startDate, endDate);
+        return modelMapper.map(orderEntityList,new TypeToken<List<OrderResource>>() {}.getType());
     }
 }

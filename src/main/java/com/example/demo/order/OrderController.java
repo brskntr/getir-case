@@ -2,6 +2,7 @@ package com.example.demo.order;
 
 import com.example.demo.security.JwtTokenUtil;
 import com.example.demo.shared.model.CaseResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 /**
  * @author bariskantar
  */
+@Slf4j
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -33,9 +36,10 @@ public class OrderController {
     }
 
     @GetMapping("/get/date-range")
-    public CaseResponse<OrderResource> create(@RequestParam("startDate") ZonedDateTime startDate,
-                                              @RequestParam("endDate") ZonedDateTime endDate){
-        return new CaseResponse<>();
+    public CaseResponse<List<OrderResource>> create(@RequestParam("startDate") String startDate,
+                                                    @RequestParam("endDate") String endDate){
+        log.info("Orders listing between StartDate -> {} , EndDate -> {}",startDate,endDate);
+        return new CaseResponse<>(orderService.listByDateRange(ZonedDateTime.parse(startDate),ZonedDateTime.parse(endDate)));
     }
 
     @PostMapping("/create")

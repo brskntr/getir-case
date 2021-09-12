@@ -12,4 +12,13 @@ public class OrderDto {
     private String customerId;
     private String bookId;
     private int count;
+
+    @Override
+    public String toString() {
+        return "OrderDto{" +
+                "customerId='" + customerId + '\'' +
+                ", bookId='" + bookId + '\'' +
+                ", count=" + count +
+                '}';
+    }
 }

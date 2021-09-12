@@ -16,10 +16,17 @@ import java.math.BigDecimal;
 public class BookDto implements Serializable {
 
     private String author;
-
     private String name;
-
     private int stockCount;
-
     private BigDecimal price;
+
+    @Override
+    public String toString() {
+        return "BookDto{" +
+                "author='" + author + '\'' +
+                ", name='" + name + '\'' +
+                ", stockCount=" + stockCount +
+                ", price=" + price +
+                '}';
+    }
 }

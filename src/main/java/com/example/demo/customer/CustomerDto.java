@@ -16,4 +16,12 @@ public class CustomerDto implements Serializable {
 
     private String email;
     private String fullName;
+
+    @Override
+    public String toString() {
+        return "CustomerDto{" +
+                "email='" + email + '\'' +
+                ", fullName='" + fullName + '\'' +
+                '}';
+    }
 }

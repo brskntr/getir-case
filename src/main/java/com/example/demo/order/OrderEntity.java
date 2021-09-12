@@ -2,6 +2,7 @@ package com.example.demo.order;
 
 import com.example.demo.book.BookEntity;
 import com.example.demo.customer.CustomerEntity;
+import com.example.demo.shared.model.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -16,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 
@@ -25,23 +27,13 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @Entity(name = "book_order")
-public class OrderEntity {
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id")
-    private String id;
+public class OrderEntity extends BaseEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private CustomerEntity customer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private BookEntity book;
-
-    @CreationTimestamp
-    @Column(name = "create_date")
-    private ZonedDateTime createDate;
 
     @Column(name = "count")
     private int count;

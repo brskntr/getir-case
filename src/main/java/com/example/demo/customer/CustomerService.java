@@ -29,7 +29,9 @@ public class CustomerService {
     }
 
     public CustomerResource create(CustomerDto customerDto){
+
         log.info("[CustomerService.create] customerDto {}",customerDto);
+
         customerRepository.findByEmail(customerDto.getEmail()).ifPresent(c->{
             throw new DuplicateException("The provided email not available on system.");
         });

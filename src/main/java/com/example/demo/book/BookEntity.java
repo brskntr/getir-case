@@ -1,17 +1,15 @@
 package com.example.demo.book;
 
 import com.example.demo.order.OrderEntity;
+import com.example.demo.shared.model.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +20,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity(name = "book")
-public class BookEntity {
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id")
-    private String id;
+public class BookEntity extends BaseEntity implements Serializable {
 
     @Column(name = "author")
     private String author;
