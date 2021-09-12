@@ -35,6 +35,7 @@ public class CustomerController {
     @GetMapping("/orders")
     public CaseResponse<List<OrderResource>> orders(@RequestHeader("X-Auth")String authHeader){
         String customerId = jwtTokenUtil.getUsernameFromToken(authHeader);
+
         return new CaseResponse<>(customerService.getOrders(customerId));
     }
 }
